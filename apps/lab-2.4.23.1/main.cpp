@@ -8,7 +8,7 @@ int main() {
 
     cin >> x;
 
-    cout << "Size of unsigned long: " << sizeof(x) << endl;  // TODO Why 81?
+    cout << "Size of unsigned long: " << sizeof(x) << endl;
 
     for (unsigned int bits = 0; x != 0; bits++) {
         if (x & 1u) {

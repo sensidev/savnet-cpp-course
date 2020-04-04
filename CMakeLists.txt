@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 
 set(APP sandbox)
 #set(APP lab-1.7.3.1)
+#set(APP lab-2.4.23.1)
 
 include_directories(${PROJECT_NAME} PUBLIC apps/${APP}/)
 
