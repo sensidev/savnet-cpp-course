@@ -57,7 +57,10 @@ int main() {
     cout << "Title changed to " << person2.title << endl;
 
     person1.check_this_out();
+    cout << &person1 << endl;
+
     person2.check_this_out();
+    cout << &person2 << endl;
 
     return 0;
 }

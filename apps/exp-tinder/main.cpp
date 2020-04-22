@@ -1,5 +1,6 @@
 #include "iostream"
 #include "profile.h"
+#include "match_making_service.h"
 
 /*
  * Dating app - Tinder in C++
@@ -19,21 +20,12 @@
  *  - if has at least 2 hobbies in common.
  */
 int main() {
-    string city;
+    MatchMakingService *service_pointer = MatchMakingService::get_instance(10);
+    cout << service_pointer << endl;
+
+    service_pointer = MatchMakingService::get_instance(10);
+    cout << service_pointer << " - You get the same instance because it is a singleton " << endl << endl;
 
 
-    cout << "City: ";
-    cin >> city;
-
-    Profile p("Gică", 14);
-
-    p.set_city(city);
-    p.set_country("Romania");
-    p.set_nickname("Contra");
-
-    p.add_hobby("Fishing");
-    p.add_hobby("Ski");
-    p.add_hobby("Snowboarding");
-
-    cout << p.get_profile();
+    service_pointer->show_all_profile_previews();
 }

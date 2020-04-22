@@ -25,6 +25,7 @@ public:
     void add_hobby(string hobby);
 
     string get_profile();
+    string get_profile_preview();
 };
 
 #endif
