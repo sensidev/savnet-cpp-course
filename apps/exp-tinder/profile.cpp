@@ -19,6 +19,22 @@ void Profile::set_nickname(string nickname) {
     this->nickname = nickname;
 }
 
+bool Profile::is_same_city(Profile other) {
+    return this->city == other.city;
+}
+
+bool Profile::is_same_country(Profile other) {
+    return this->country == other.country;
+}
+
+bool Profile::is_age_close_to(Profile other, unsigned int delta) {
+    return this->age - delta <= other.age <= this->age + delta;
+}
+
+bool Profile::has_same_hobbies(Profile other, unsigned int how_many) {
+    return true;  // todo, figure out a way to match `how_many` hobbies.
+}
+
 void Profile::add_hobby(string hobby) {
     this->hobbies.push_back(hobby);
 }

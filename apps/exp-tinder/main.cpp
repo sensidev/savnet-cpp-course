@@ -1,6 +1,9 @@
 #include "iostream"
 #include "profile.h"
 #include "match_making_service.h"
+#include "profile_database.h"
+
+static Profile create_my_profile();
 
 /*
  * Dating app - Tinder in C++
@@ -20,12 +23,31 @@
  *  - if has at least 2 hobbies in common.
  */
 int main() {
-    MatchMakingService *service_pointer = MatchMakingService::get_instance(10);
-    cout << service_pointer << endl;
+    ProfileDatabase database(100);
+    database.show_all_profile_previews();
 
-    service_pointer = MatchMakingService::get_instance(10);
-    cout << service_pointer << " - You get the same instance because it is a singleton " << endl << endl;
+    MatchMakingService *service_pointer = MatchMakingService::get_instance(&database);
 
+    Profile me = create_my_profile();
 
-    service_pointer->show_all_profile_previews();
+    vector<Profile> matches = service_pointer->match(me);
+
+    cout << matches.size();
+}
+
+static Profile create_my_profile() {
+    string name;
+    unsigned int age;
+
+    cout << "Name: ";
+    cin >> name;
+
+    cout << "Age: ";
+    cin >> age;
+
+    Profile my_profile(name, age);
+
+    // todo: add more stuff
+
+    return my_profile;
 }

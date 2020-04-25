@@ -2,24 +2,23 @@
 #define SAVNET_CPP_MATCH_MAKING_SERVICE_H
 
 #include "profile.h"
+#include "profile_database.h"
 
 class MatchMakingService {
 private:
-    vector<Profile> profiles;
+    ProfileDatabase *database_pointer;
 
     /* Here will be the instance stored. */
     static MatchMakingService *instance;
 
     /* Private constructor to prevent instancing. */
-    MatchMakingService(unsigned int number_of_profiles);
-
-    void add_new_random_profile(int seed);
+    MatchMakingService(ProfileDatabase *database_pointer);
 
 public:
     /* Static access method. */
-    static MatchMakingService *get_instance(unsigned int number_of_profiles);
+    static MatchMakingService *get_instance(ProfileDatabase *database_pointer);
 
-    void show_all_profile_previews();
+    vector<Profile> match(Profile profile);
 };
 
 
