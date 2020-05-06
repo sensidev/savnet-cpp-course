@@ -29,6 +29,8 @@ int main() {
 double divide(int a, int b) {
     if (b == 0) {
         throw DivideByZeroException();
+        // Alternative:
+        // throw 'Divide by zero';
     }
     return (double) a / b;
 }
