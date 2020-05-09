@@ -27,15 +27,19 @@ public:
 
     void set_nickname(string nickname);
 
-    bool is_same_city(Profile other);
+    bool operator==(const Profile &right);
 
-    bool is_same_country(Profile country);
+    bool operator!=(const Profile &right);
 
-    bool is_age_close_to(Profile other, unsigned int delta);
+    bool is_same_city(const Profile& other);
 
-    bool has_same_hobbies(Profile other, unsigned int how_many);
+    bool is_same_country(const Profile& country);
 
-    void add_hobby(string hobby);
+    bool is_age_close_to(const Profile& other, unsigned int delta);
+
+    bool has_same_hobbies(const Profile& other, unsigned int how_many);
+
+    void add_hobby(const string& hobby);
 
     string get_profile();
 

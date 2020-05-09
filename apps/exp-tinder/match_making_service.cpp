@@ -25,30 +25,17 @@ MatchMakingService *MatchMakingService::get_instance(ProfileDatabase *database_p
  * @param profile the profile to match
  * @return vector of matched profiles
  */
-vector<Profile> MatchMakingService::match(Profile profile) {
+vector<Profile> MatchMakingService::match(const Profile& profile) {
     vector<Profile> matches = {};
 
     unsigned int number_of_profiles = this->database_pointer->get_count();
 
     for (int i = 0; i < number_of_profiles; i++) {
         Profile p = this->database_pointer->get_profile(i);
-
-        if (!p.is_same_country(profile)) {
-            break;
+        if (p != profile) {
+            // just skip this profile, move to the next
+            continue;
         }
-
-        if (!p.is_same_city(profile)) {
-            break;
-        }
-
-        if (!p.is_age_close_to(profile, 5)) {
-            break;
-        }
-
-        if (!p.has_same_hobbies(profile, 2)) {
-            break;
-        }
-
         matches.push_back(p);
     }
 

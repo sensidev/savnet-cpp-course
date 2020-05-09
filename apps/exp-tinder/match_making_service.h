@@ -18,7 +18,7 @@ public:
     /* Static access method. */
     static MatchMakingService *get_instance(ProfileDatabase *database_pointer);
 
-    vector<Profile> match(Profile profile);
+    vector<Profile> match(const Profile& profile);
 };
 
 

@@ -23,7 +23,7 @@ static Profile create_my_profile();
  *  - if has at least 2 hobbies in common.
  */
 int main() {
-    ProfileDatabase database(100);
+    ProfileDatabase database(1000);
     database.show_all_profile_previews();
 
     MatchMakingService *service_pointer = MatchMakingService::get_instance(&database);
@@ -32,22 +32,47 @@ int main() {
 
     vector<Profile> matches = service_pointer->match(me);
 
-    cout << matches.size();
+    for (Profile &profile:matches) {
+        cout << profile.get_profile();
+    }
+
+    cout << "You have " << matches.size() << " matches" << endl;
 }
 
 static Profile create_my_profile() {
     string name;
-    unsigned int age;
-
     cout << "Name: ";
     cin >> name;
 
+    unsigned int age;
     cout << "Age: ";
     cin >> age;
 
     Profile my_profile(name, age);
 
-    // todo: add more stuff
+    string nickname;
+    cout << "Nickname: ";
+    cin >> nickname;
+    my_profile.set_nickname(nickname);
 
+    string country;
+    cout << "Country: ";
+    cin >> country;
+    my_profile.set_country(country);
+
+    string city;
+    cout << "City: ";
+    cin >> city;
+    my_profile.set_city(city);
+
+    unsigned int hobby_count = 0;
+    cout << "How many hobbies do you have? " << endl;
+    cin >> hobby_count;
+
+    for (unsigned int hobby_index = 0; hobby_index < hobby_count; hobby_index++) {
+        string hobby;
+        cin >> hobby;
+        my_profile.add_hobby(hobby);
+    }
     return my_profile;
 }
