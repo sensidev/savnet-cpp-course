@@ -8,7 +8,6 @@ int main() {
     for (int lineIndex = 0; lineIndex < 10; lineIndex++) {
         int *linePointer = matrix[lineIndex];
 
-        //continutul pointerului va fii setat cu lineIndex + 1
         *linePointer = lineIndex + 1;
 
         for (int colIndex = 0; colIndex < 9; colIndex++) {
